@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Republic Fitness KK — 你的健身之旅从这里开始 | 亚庇健身中心</title>
+    <meta name="description" content="Republic Fitness KK — 位于沙巴亚庇 Centre Point 购物中心 8 楼的现代化健身中心。力量训练、有氧运动、私人教练。">
+
+    <!-- Google Fonts: Noto Sans SC (中文) + Anton (英文标题) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================
+           CSS Custom Properties / Design System
+           ======================================== */
+        :root {
+            --color-primary: #FF4500;
+            --color-primary-hover: #E03E00;
+            --color-accent: #FF6B35;
+            --color-bg-dark: #0A0A0F;
+            --color-bg-section: #111119;
+            --color-bg-card: #1A1A26;
+            --color-bg-card-hover: #222233;
+            --color-text: #F0F0F0;
+            --color-text-muted: #A0A0B0;
+            --color-border: #2A2A3A;
+            --color-gradient-1: #FF4500;
+            --color-gradient-2: #FF6B35;
+            --color-gradient-3: #FF8C42;
+            --font-heading: 'Anton', sans-serif;
+            --font-body: 'Noto Sans SC', sans-serif;
+            --transition-fast: 0.2s ease;
+            --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+            --shadow-glow: 0 0 40px rgba(255,69,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --max-width: 1200px;
+        }
+
+        /* ========================================
+           Reset & Base
+           ======================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-dark);
+            color: var(--color-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            line-height: 1.15;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ========================================
+           Utility Classes
+           ======================================== */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-muted {
+            color: var(--color-text-muted);
+        }
+
+        /* ========================================
+           Scroll Reveal Animation
+           ======================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ========================================
+           Navigation
+           ======================================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: background var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 15, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+        }
+
+        .nav-logo-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-logo-accent {
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            position: relative;
+            padding: 4px 0;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: #fff !important;
+            padding: 8px 20px !important;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            transition: background var(--transition-fast), transform var(--transition-fast) !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-hover) !important;
+            transform: translateY(-2px);
+            color: #fff !important;
+        }
+
+        /* Mobile menu */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text);
+            border-radius: 2px;
+            transition: all var(--transition-smooth);
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ========================================
+           Hero Section
+           ======================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--color-bg-dark);
+            overflow: hidden;
+            padding-top: 64px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                ellipse at 30% 50%,
+                rgba(255,69,0,0.08) 0%,
+                transparent 55%
+            ),
+            radial-gradient(
+                ellipse at 70% 20%,
+                rgba(255,107,53,0.05) 0%,
+                transparent 55%
+            );
+            animation: heroGradientShift 15s ease-in-out infinite;
+        }
+
+        @keyframes heroGradientShift {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(2%, -1%); }
+            66% { transform: translate(-1%, 1%); }
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.5) 2px,
+                    rgba(255,255,255,0.5) 4px
+                );
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 40px 24px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,69,0,0.15);
+            color: var(--color-primary);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,69,0,0.25);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .hero-title-accent {
+            color: var(--color-primary);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+            color: var(--color-text-muted);
+            margin-bottom: 36px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255,69,0,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255,69,0,0.45);
+            color: #fff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text);
+            border: 2px solid var(--color-border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-primary);
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        /* ========================================
+           Section Header
+           ======================================== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           About Section
+           ======================================== */
+        .about {
+            background: var(--color-bg-section);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, #1A1A2E, #16213E, #0F3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255,69,0,0.2), transparent);
+        }
+
+        .about-image-placeholder .icon-dumbbell {
+            font-size: 5rem;
+            opacity: 0.6;
+            color: rgba(255,69,0,0.7);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--color-primary);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            z-index: 2;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .about-feature-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255,69,0,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+
+        .about-feature-text h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        .about-feature-text p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        /* ========================================
+           Services Section
+           ======================================== */
+        .services {
+            background: var(--color-bg-dark);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-md);
+            padding: 36px 28px;
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-smooth);
+        }
+
+        .service-card:hover {
+            background: var(--color-bg-card-hover);
+            border-color: rgba(255,69,0,0.3);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255,69,0,0.2), rgba(255,107,53,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: #fff;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+        }
+
+        /* ========================================
+           Gallery Section
+           ======================================== */
+        .gallery {
+            background: var(--color-bg-section);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            position: relative;
+            cursor: default;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition-smooth);
+        }
+
+        .gallery-item:nth-child(1) .gallery-placeholder {
+            background: linear-gradient(135deg, #1A1A2E, #2D1B2E);
+        }
+        .gallery-item:nth-child(2) .gallery-placeholder {
+            background: linear-gradient(135deg, #16213E, #1A3A3A);
+        }
+        .gallery-item:nth-child(3) .gallery-placeholder {
+            background: linear-gradient(135deg, #1B1B2F, #2A1B2E);
+        }
+        .gallery-item:nth-child(4) .gallery-placeholder {
+            background: linear-gradient(135deg, #0F2027, #203A43);
+        }
+        .gallery-item:nth-child(5) .gallery-placeholder {
+            background: linear-gradient(135deg, #1A1A2E, #1E2A3A);
+        }
+        .gallery-item:nth-child(6) .gallery-placeholder {
+            background: linear-gradient(135deg, #16213E, #1F1C2C);
+        }
+
+        .gallery-placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255,69,0,0.15), transparent 70%);
+        }
+
+        .gallery-placeholder-icon {
+            font-size: 3rem;
+            color: rgba(255,69,0,0.6);
+            z-index: 1;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 1;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.05);
+        }
+
+        /* ========================================
+           Location Section
+           ======================================== */
+        .location {
+            background: var(--color-bg-dark);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: stretch;
+        }
+
+        .location-map {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            min-height: 380px;
+        }
+
+        .location-map-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1A1A2E, #16213E);
+            gap: 16px;
+        }
+
+        .location-map-placeholder .map-icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            opacity: 0.7;
+        }
+
+        .location-map-placeholder a {
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .location-info h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+
+        .location-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .location-detail-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255,69,0,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+
+        .location-detail-text h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        .location-detail-text p {
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+        }
+
+        .location-hours {
+            margin-top: 28px;
+            padding: 20px;
+            background: var(--color-bg-card);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .location-hours h4 {
+            color: var(--color-primary);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .location-hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .location-hours-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .location-hours-row .day {
+            color: var(--color-text-muted);
+        }
+        .location-hours-row .time {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* ========================================
+           Contact Section
+           ======================================== */
+        .contact {
+            background: var(--color-bg-section);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-md);
+            padding: 30px 24px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-card:hover {
+            background: var(--color-bg-card-hover);
+            border-color: rgba(255,69,0,0.3);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .contact-card-icon {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+
+        .contact-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+            word-break: break-all;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--color-bg-card);
+            border-radius: 50px;
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            border-color: var(--color-primary);
+            background: rgba(255,69,0,0.08);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .social-link-icon {
+            font-size: 1.3rem;
+        }
+
+        /* ========================================
+           Footer
+           ======================================== */
+        .footer {
+            background: #06060D;
+            border-top: 1px solid var(--color-border);
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: #fff;
+            letter-spacing: 0.06em;
+        }
+
+        .footer-logo span {
+            color: var(--color-primary);
+        }
+
+        .footer-copy {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            background: rgba(255,69,0,0.06);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        .footer-disclaimer strong {
+            color: var(--color-accent);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            border: none;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all var(--transition-smooth);
+            box-shadow: 0 4px 16px rgba(255,69,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-4px);
+        }
+
+        /* ========================================
+           Responsive
+           ======================================== */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image-wrapper {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .section-padding {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                max-width: 320px;
+                height: 100vh;
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 100px 40px 40px;
+                gap: 24px;
+                transition: right var(--transition-smooth);
+                border-left: 1px solid var(--color-border);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .hero-stat-number {
+                font-size: 1.6rem;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .location-map {
+                min-height: 280px;
+            }
+
+            .location-map-placeholder {
+                min-height: 280px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 260px;
+                justify-content: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           Emoji / Icon fallback styles
+           ======================================== */
+        .icon-emoji {
+            font-style: normal;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         Navigation
+         ======================================== -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img
+                    src="images/profile.jpg"
+                    alt="Republic Fitness KK Logo"
+                    class="nav-logo-img"
+                    loading="lazy"
+                    width="36"
+                    height="36"
+                >
+                RF<span class="nav-logo-accent">KK</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">关于我们</a>
+                <a href="#services">服务项目</a>
+                <a href="#gallery">健身环境</a>
+                <a href="#location">位置</a>
+                <a href="#contact" class="nav-cta">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         Hero Section
+         ======================================== -->
+    <section class="hero" id="home">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-badge reveal">📍 沙巴亚庇 · Centre Point 8楼</div>
+            <h1 class="hero-title reveal reveal-delay-1">
+                REPUBLIC<br>
+                FITNESS <span class="hero-title-accent">KK</span>
+            </h1>
+            <p class="hero-subtitle reveal reveal-delay-2">
+                你的健身之旅从这里开始 — 专业设备、动感氛围、位于亚庇市中心的顶级训练空间
+            </p>
+            <div class="hero-buttons reveal reveal-delay-3">
+                <a href="#services" class="btn btn-primary">🔥 立即了解</a>
+                <a href="#location" class="btn btn-outline">📍 查看位置</a>
+            </div>
+            <div class="hero-stats reveal reveal-delay-4">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">⭐ 4.7</div>
+                    <div class="hero-stat-label">Google 评分</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">3.4K+</div>
+                    <div class="hero-stat-label">社交媒体粉丝</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">8F</div>
+                    <div class="hero-stat-label">Centre Point</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         About Section
+         ======================================== -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">关于我们</div>
+                <h2 class="section-title">走进 Republic Fitness KK</h2>
+                <p class="section-desc">位于沙巴亚庇市中心，致力于为每一位会员提供卓越的健身体验</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image-wrapper reveal reveal-delay-1">
+                    <div class="about-image-placeholder">
+                        <span class="icon-emoji" style="font-size: 5rem; opacity: 0.6;">🏋️</span>
+                    </div>
+                    <div class="about-image-accent">CENTRE POINT 8F</div>
+                </div>
+                <div class="about-content reveal reveal-delay-2">
+                    <h3>亚庇市中心的健身新地标</h3>
+                    <p>
+                        Republic Fitness KK 坐落于沙巴亚庇核心商圈 —— Centre Point Sabah 购物中心 8 楼（保龄球中心旁），
+                        交通便利，环境宽敞。我们为健身爱好者打造了一个专业、舒适的训练空间，让你在都市繁华中尽享运动乐趣。
+                    </p>
+                    <p>
+                        无论你是健身新手还是资深训练者，这里都有适合你的设备和氛围。
+                        我们相信，健身不仅是锻炼身体，更是一种积极向上的生活方式。
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <span class="icon-emoji">📍</span>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>黄金地段</h4>
+                                <p>位于 Centre Point 购物中心 8 楼，购物休闲一站式</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <span class="icon-emoji">🏢</span>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>宽敞空间</h4>
+                                <p>现代化健身环境，通风采光俱佳</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <span class="icon-emoji">🅿️</span>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>便捷停车</h4>
+                                <p>购物中心配套停车场，出入无忧</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <span class="icon-emoji">🤝</span>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>友好社群</h4>
+                                <p>加入我们的健身社区，与志同道合的朋友一起进步</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Services Section
+         ======================================== -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">服务项目</div>
+                <h2 class="section-title">我们的健身服务</h2>
+                <p class="section-desc">多样化的训练选择，满足不同健身目标的需求</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <span class="icon-emoji">💪</span>
+                    </div>
+                    <h3>力量训练区</h3>
+                    <p>配备齐全的自由重量和器械训练设备，涵盖哑铃、杠铃、综合训练架等，满足各种力量训练需求。</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <span class="icon-emoji">🏃</span>
+                    </div>
+                    <h3>有氧运动区</h3>
+                    <p>跑步机、椭圆机、动感单车等有氧设备一应俱全，帮助你提升心肺功能、燃烧脂肪。</p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <span class="icon-emoji">👤</span>
+                    </div>
+                    <h3>私人教练</h3>
+                    <p>一对一专业指导，根据你的身体状况和目标量身定制训练计划，确保安全高效地达成健身目标。</p>
+                </div>
+                <div class="service-card reveal reveal-delay-4">
+                    <div class="service-icon">
+                        <span class="icon-emoji">🧑‍🤝‍🧑</span>
+                    </div>
+                    <h3>团体课程</h3>
+                    <p>丰富的团体健身课程选择，在充满活力的氛围中与伙伴们一起挥洒汗水，互相激励。</p>
+                </div>
+                <div class="service-card reveal reveal-delay-5">
+                    <div class="service-icon">
+                        <span class="icon-emoji">🧘</span>
+                    </div>
+                    <h3>伸展放松区</h3>
+                    <p>专门的拉伸区域，帮助你进行训练前后的热身与放松，减少运动损伤风险。</p>
+                </div>
+                <div class="service-card reveal reveal-delay-5">
+                    <div class="service-icon">
+                        <span class="icon-emoji">🧹</span>
+                    </div>
+                    <h3>整洁环境</h3>
+                    <p>我们重视卫生与整洁，定期清洁消毒设备，为你提供干净舒适的训练环境。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Gallery Section
+         ======================================== -->
+    <section class="gallery section-padding" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">健身环境</div>
+                <h2 class="section-title">训练空间预览</h2>
+                <p class="section-desc">现代化健身设施，为你打造理想的训练环境</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-placeholder">
+                        <span class="gallery-placeholder-icon icon-emoji">🏋️‍♂️</span>
+                        <div class="gallery-label">力量训练区</div>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-placeholder">
+                        <span class="gallery-placeholder-icon icon-emoji">🚴</span>
+                        <div class="gallery-label">有氧运动区</div>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-placeholder">
+                        <span class="gallery-placeholder-icon icon-emoji">🏟️</span>
+                        <div class="gallery-label">开放式训练空间</div>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-placeholder">
+                        <span class="gallery-placeholder-icon icon-emoji">🧘‍♀️</span>
+                        <div class="gallery-label">伸展放松区</div>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-placeholder">
+                        <span class="gallery-placeholder-icon icon-emoji">🏢</span>
+                        <div class="gallery-label">Centre Point 外观</div>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-placeholder">
+                        <span class="gallery-placeholder-icon icon-emoji">🌆</span>
+                        <div class="gallery-label">亚庇城市景观</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Location Section
+         ======================================== -->
+    <section class="location section-padding" id="location">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">位置</div>
+                <h2 class="section-title">找到我们</h2>
+                <p class="section-desc">沙巴亚庇市中心，Centre Point 购物中心 8 楼</p>
+            </div>
+            <div class="location-grid">
+                <div class="location-map reveal reveal-delay-1">
+                    <div class="location-map-placeholder">
+                        <span class="map-icon icon-emoji">🗺️</span>
+                        <p style="color: var(--color-text-muted); font-size: 1rem;">
+                            Google Maps
+                        </p>
+                        <a href="https://www.google.com/maps/place/Republic+Fitness+KK,+Centre+Point+Sabah/"
+                           target="_blank"
+                           rel="noopener nofollow">
+                            在 Google Maps 中打开 📍
+                        </a>
+                        <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-top: 4px;">
+                            评分 ⭐ 4.7
+                        </p>
+                    </div>
+                </div>
+                <div class="location-info reveal reveal-delay-2">
+                    <h3>地址与营业信息</h3>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">
+                            <span class="icon-emoji">📍</span>
+                        </div>
+                        <div class="location-detail-text">
+                            <h4>地址</h4>
+                            <p>Republic Fitness, 8F, Centre Point Sabah Shopping Mall<br>(Beside Bowling Centre)<br>Kota Kinabalu, Sabah, Malaysia</p>
+                        </div>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">
+                            <span class="icon-emoji">🚗</span>
+                        </div>
+                        <div class="location-detail-text">
+                            <h4>到达方式</h4>
+                            <p>位于 Centre Point Sabah 购物中心 8 楼，保龄球中心旁边。购物中心设有停车场，公共交通可达。</p>
+                        </div>
+                    </div>
+                    <div class="location-hours">
+                        <h4>🕐 参考营业时间</h4>
+                        <div class="location-hours-list">
+                            <div class="location-hours-row">
+                                <span class="day">周一至周五</span>
+                                <span class="time">请联系确认</span>
+                            </div>
+                            <div class="location-hours-row">
+                                <span class="day">周六</span>
+                                <span class="time">请联系确认</span>
+                            </div>
+                            <div class="location-hours-row">
+                                <span class="day">周日</span>
+                                <span class="time">请联系确认</span>
+                            </div>
+                        </div>
+                        <p style="color: var(--color-text-muted); font-size: 0.78rem; margin-top: 10px;">
+                            * 以上为参考信息，具体营业时间请通过电话或社交媒体确认。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Contact Section
+         ======================================== -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">联系我们</div>
+                <h2 class="section-title">保持联系</h2>
+                <p class="section-desc">欢迎通过以下方式联系我们，了解更多信息</p>
+            </div>
+            <div class="contact-grid">
+                <a href="tel:+601169505720" class="contact-card reveal reveal-delay-1">
+                    <div class="contact-card-icon">
+                        <span class="icon-emoji">📞</span>
+                    </div>
+                    <h4>电话</h4>
+                    <p>011-6950 5720</p>
+                </a>
+                <a href="mailto:republic.fitness23@gmail.com" class="contact-card reveal reveal-delay-2">
+                    <div class="contact-card-icon">
+                        <span class="icon-emoji">✉️</span>
+                    </div>
+                    <h4>邮箱</h4>
+                    <p>republic.fitness23@gmail.com</p>
+                </a>
+                <a href="https://www.instagram.com/republic.fitnesskk/" target="_blank" rel="noopener nofollow" class="contact-card reveal reveal-delay-3">
+                    <div class="contact-card-icon">
+                        <span class="icon-emoji">📸</span>
+                    </div>
+                    <h4>Instagram</h4>
+                    <p>@republic.fitnesskk</p>
+                </a>
+                <a href="https://www.facebook.com/republicfitnesskk" target="_blank" rel="noopener nofollow" class="contact-card reveal reveal-delay-4">
+                    <div class="contact-card-icon">
+                        <span class="icon-emoji">👍</span>
+                    </div>
+                    <h4>Facebook</h4>
+                    <p>republicfitnesskk</p>
+                </a>
+            </div>
+            <div class="social-links reveal reveal-delay-5">
+                <a href="https://www.instagram.com/republic.fitnesskk/" target="_blank" rel="noopener nofollow" class="social-link">
+                    <span class="social-link-icon icon-emoji">📸</span> Instagram
+                </a>
+                <a href="https://www.facebook.com/republicfitnesskk" target="_blank" rel="noopener nofollow" class="social-link">
+                    <span class="social-link-icon icon-emoji">👍</span> Facebook
+                </a>
+                <a href="https://www.google.com/maps/place/Republic+Fitness+KK,+Centre+Point+Sabah/" target="_blank" rel="noopener nofollow" class="social-link">
+                    <span class="social-link-icon icon-emoji">📍</span> Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Footer
+         ======================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo reveal">
+                    REPUBLIC FITNESS <span>KK</span>
+                </div>
+                <p class="footer-copy reveal">
+                    &copy; 2024 Republic Fitness KK. All rights reserved.
+                </p>
+                <div class="footer-disclaimer reveal">
+                    <strong>⚠️ 免责声明：</strong>
+                    Concept preview prepared for Republic Fitness KK. This is an unofficial design sample.
+                    Images, copy, and business details are draft placeholders and will be replaced or confirmed
+                    with the business owner before publication.
+                    本页面为 Republic Fitness KK 的概念预览设计方案，非官方发布内容。
+                    页面中的图片、文案及业务详情均为占位草稿，将在正式发布前与业主确认并替换。
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         Back to Top Button
+         ======================================== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <span class="icon-emoji">↑</span>
+    </button>
+
+    <!-- ========================================
+         JavaScript
+         ======================================== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // DOM Elements
+            const navbar = document.getElementById('navbar');
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+            const backToTop = document.getElementById('backToTop');
+
+            // ===== Scroll Reveal =====
+            const revealElements = document.querySelectorAll('.reveal');
+
+            function handleReveal() {
+                const windowHeight = window.innerHeight;
+                const revealPoint = 100;
+
+                revealElements.forEach(function(el) {
+                    const revealTop = el.getBoundingClientRect().top;
+                    if (revealTop < windowHeight - revealPoint) {
+                        el.classList.add('visible');
+                    }
+                });
+            }
+
+            // ===== Navbar scroll effect =====
+            function handleNavScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                // Back to top
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            }
+
+            // ===== Mobile nav toggle =====
+            navToggle.addEventListener('click', function() {
+                navToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile nav when clicking a link
+            navLinks.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // ===== Back to top =====
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ===== Smooth scroll for anchor links =====
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    e.preventDefault();
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        var navHeight = navbar.offsetHeight;
+                        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ===== Combined scroll handler (with throttle) =====
+            var ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        handleReveal();
+                        handleNavScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // ===== Initial calls =====
+            handleReveal();
+            handleNavScroll();
+
+            // ===== Lazy loading for images =====
+            if ('loading' in HTMLImageElement.prototype) {
+                // Native lazy loading supported — already set via loading="lazy"
+            } else {
+                // Fallback: load all images eagerly
+                document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+                    img.removeAttribute('loading');
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
