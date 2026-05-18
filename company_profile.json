@@ -1,0 +1,36 @@
+{
+  "company": {
+    "name": "Republic Fitness KK",
+    "tagline": "Your Fitness Journey Starts Here",
+    "category": "Gym / Physical fitness centre",
+    "location": "Kota Kinabalu, Sabah, Malaysia",
+    "address": "Republic Fitness, 8F, Centre Point Sabah Shopping Mall (Beside Bowling Centre), Kota Kinabalu, Malaysia",
+    "phone": "011-6950 5720",
+    "email": "republic.fitness23@gmail.com",
+    "instagram": "@republic.fitnesskk",
+    "facebook_url": "https://www.facebook.com/republicfitnesskk",
+    "followers": "3.4K",
+    "google_rating": 4.7,
+    "status": "Open now",
+    "plus_code": "X3HC+CW Kota Kinabalu, Sabah",
+    "features": [
+      "Gym & Fitness Centre",
+      "Personal Training",
+      "Group Classes",
+      "Modern Equipment",
+      "Bowling Centre Nearby",
+      "Centre Point Location"
+    ]
+  },
+  "brand": {
+    "industry": "fitness_gym",
+    "style": "energetic_masculine",
+    "design_templates": ["linear-app", "vercel"],
+    "color_scheme": "dark_energetic_orange_black"
+  },
+  "images": {
+    "logo": "images/profile.jpg",
+    "cover": "images/profile.jpg",
+    "gallery_dir": "images/gallery/"
+  }
+}
